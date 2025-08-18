@@ -1,0 +1,27 @@
+package com.abhi.firstlevelcache;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.hql.Student;
+
+public class CacheDemo {
+	
+	public static void main(String[] args) {
+		
+		
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session session = sf.openSession();
+		
+		Student student = session.get(Student.class, 22);
+		System.out.println(student);
+		System.out.println("Working something-----------------");
+		Student student2 = session.get(Student.class, 22);
+		System.out.println(student2);
+		
+		session.close();
+		sf.close();
+	}
+
+}

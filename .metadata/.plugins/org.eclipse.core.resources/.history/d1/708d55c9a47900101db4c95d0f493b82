@@ -1,0 +1,46 @@
+package com.abhi.map.manytomany;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class MapDemo {
+
+	public static void main(String[] args) {
+		
+		
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		
+		Employee emp1 = new Employee();
+		Employee emp2 = new Employee();
+		
+		emp1.setEid(11);
+		emp1.setName("Ram");
+		
+		emp1.setEid(22);
+		emp1.setName("Shyam");
+		
+		Project p1 = new Project();
+		Project p2 = new Project();
+		
+		p1.setPid(101);
+		p1.setProjectName("Library Management");
+		
+		p2.setPid(112);
+		p2.setProjectName("Chatbot");
+		
+		List<Employee> empList = new ArrayList<>();
+		
+		Session session = sf.openSession();
+		Transaction transaction = session.beginTransaction();
+
+		transaction.commit();
+		sf.close();
+		session.close();
+		
+	}
+}

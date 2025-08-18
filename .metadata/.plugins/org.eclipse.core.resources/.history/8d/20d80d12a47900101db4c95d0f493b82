@@ -1,0 +1,18 @@
+package com.abhi.map.manytomany;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
+public class Employee {
+	
+	@Id
+	private int eid;
+	private String name;
+	@ManyToMany
+	private List<Project> projects;
+
+}

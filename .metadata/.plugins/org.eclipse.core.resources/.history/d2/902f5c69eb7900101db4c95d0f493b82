@@ -1,0 +1,35 @@
+package com.hql;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		
+		SessionFactory f = new Configuration().configure().buildSessionFactory();
+		Session session = f.openSession();
+		
+		String query = "from Student where city =:c and course =:x";
+		
+		Query<Student> result = session.createQuery(query);
+		result.setParameter("c", "Noida");
+		result.setParameter("x", "Networking");
+		
+		List<Student> list = result.list();
+		
+		for(Student s: list ) {
+			System.out.println(s.getName());
+		}
+		
+		session.close();
+		f.close();
+
+	}
+
+}

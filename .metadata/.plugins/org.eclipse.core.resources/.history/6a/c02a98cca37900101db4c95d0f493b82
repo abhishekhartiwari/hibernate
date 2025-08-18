@@ -1,0 +1,8 @@
+package com.abhi.map.manytomany;
+
+public class Employee {
+	
+	private int eid;
+	private String name;
+
+}

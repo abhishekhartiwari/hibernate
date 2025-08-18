@@ -1,0 +1,26 @@
+package com.abhi;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class FetchDemo {
+	
+	public static void main(String[] args) {
+		
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session session = sf.openSession();
+		
+		//load
+		Student student = session.load(Student.class, 101);
+		System.out.println(student);
+		
+		//get
+		Address address = session.get(Address.class, 1);
+		System.out.println(address.getStreet() +":"+ address.getCity());
+		
+		sf.close();
+		session.close();
+	}
+
+}

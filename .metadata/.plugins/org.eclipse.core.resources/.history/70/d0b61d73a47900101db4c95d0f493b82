@@ -1,0 +1,28 @@
+package com.abhi.map.manytomany;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class MapDemo {
+
+	public static void main(String[] args) {
+		
+		
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		
+		Employee emp = new Employee();
+		
+		Session session = sf.openSession();
+		Transaction transaction = session.beginTransaction();
+
+		transaction.commit();
+		sf.close();
+		session.close();
+		
+	}
+}

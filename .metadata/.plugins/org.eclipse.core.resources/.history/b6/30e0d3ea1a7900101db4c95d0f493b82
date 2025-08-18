@@ -1,0 +1,37 @@
+package com.abhi;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class EmbededDemo {
+
+	public static void main(String[] args) {
+		
+		
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session session = sf.openSession();
+		
+		Student st1 = new Student();
+		st1.setId(101);
+		st1.setName("Nisha");
+		st1.setCity("Noida");
+		Certificate c = new Certificate();
+		c.setCourse("Adroid");
+		c.setDuration(2);
+		st1.setCerti(c);
+		
+		Student st2 = new Student();
+		st2.setId(101);
+		st2.setName("Nisha");
+		st2.setCity("Noida");
+		Certificate c2 = new Certificate();
+		c2.setCourse("Adroid");
+		c2.setDuration(2);
+		st2.setCerti(c2);
+		
+		sf.close();
+		session.close();
+		
+	}
+}

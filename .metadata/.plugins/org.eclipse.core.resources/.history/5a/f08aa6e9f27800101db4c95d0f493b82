@@ -1,0 +1,104 @@
+package com.abhi;
+
+import java.sql.Date;
+import java.util.Arrays;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name = "student_address")
+public class Address {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "address_id")
+	private int addressId;
+	private String Street;
+	private String city;
+	@Transient
+	private double temp;
+	@Temporal(TemporalType.DATE)
+	private Date date;
+	@Lob
+	private byte[] image;
+	
+	public Address() {
+		super();
+	}
+
+	public Address(int addressId, String street, String city, double temp, Date date, byte[] image) {
+		super();
+		this.addressId = addressId;
+		Street = street;
+		this.city = city;
+		this.temp = temp;
+		this.date = date;
+		this.image = image;
+	}
+
+	public int getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
+	}
+
+	public String getStreet() {
+		return Street;
+	}
+
+	public void setStreet(String street) {
+		Street = street;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public double getTemp() {
+		return temp;
+	}
+
+	public void setTemp(double temp) {
+		this.temp = temp;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [addressId=" + addressId + ", Street=" + Street + ", city=" + city + ", temp=" + temp
+				+ ", date=" + date + ", image=" + Arrays.toString(image) + "]";
+	}
+	
+	
+
+}
