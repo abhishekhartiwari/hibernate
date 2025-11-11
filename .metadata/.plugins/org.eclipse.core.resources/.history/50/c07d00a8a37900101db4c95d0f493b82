@@ -1,9 +1,0 @@
-package com.abhi.map.manytomany;
-
-public class Project {
-	
-	private int pid;
-	private String projectName;
-	
-
-}

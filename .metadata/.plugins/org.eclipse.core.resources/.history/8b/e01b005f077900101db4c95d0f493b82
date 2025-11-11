@@ -1,9 +1,0 @@
-package com.abhi;
-
-public class FetchDemo {
-	
-	public static void main(String[] args) {
-		
-	}
-
-}
